@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বাংলা পঞ্জিকা ২০২৬ | Bengali Calendar 2026</title>
+  <meta name="description" content="Complete Bengali-English Calendar for 2026 with West Bengal festivals, holidays, and Bengali date conversion. পূর্ণাঙ্গ বাংলা-ইংরেজি ক্যালেন্ডার ২০২৬।">
+  <meta name="keywords" content="Bengali Calendar, বাংলা পঞ্জিকা, 2026, West Bengal Holidays, Bengali Festivals">
+  <meta name="author" content="Bengali Calendar 2026">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF Generation Libraries (lazy-loaded by script.js on first use) -->
+</head>
+<body>
+
+  <!-- ===== DECORATIVE BACKGROUND PATTERN ===== -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <!-- Decorative alpona accent -->
+      <div class="header-alpona" aria-hidden="true">
+        <svg viewBox="0 0 120 120" class="alpona-svg">
+          <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+          <circle cx="60" cy="60" r="40" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.12"/>
+          <circle cx="60" cy="60" r="25" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.1"/>
+          <path d="M60 5 L65 55 L60 60 L55 55 Z" fill="currentColor" opacity="0.06"/>
+          <path d="M115 60 L65 65 L60 60 L65 55 Z" fill="currentColor" opacity="0.06"/>
+          <path d="M60 115 L55 65 L60 60 L65 65 Z" fill="currentColor" opacity="0.06"/>
+          <path d="M5 60 L55 55 L60 60 L55 65 Z" fill="currentColor" opacity="0.06"/>
+        </svg>
+      </div>
+
+      <!-- Title Section -->
+      <div class="header-title-section">
+        <h1 class="header-title">
+          <span class="title-bn" data-lang-bn="বাংলা পঞ্জিকা ২০২৬" data-lang-en="Bengali Calendar 2026">বাংলা পঞ্জিকা ২০২৬</span>
+        </h1>
+        <p class="header-subtitle" id="headerSubtitle"></p>
+      </div>
+
+      <!-- Header Controls -->
+      <div class="header-controls">
+        <!-- Language Toggle -->
+        <button class="control-btn lang-toggle" id="langToggle" aria-label="Toggle Language" title="Switch Language">
+          <span class="lang-label" id="langLabel">EN</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button class="control-btn dark-toggle" id="darkToggle" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+          <span class="dark-icon" id="darkIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Print Button -->
+        <button class="control-btn print-btn" id="printBtn" aria-label="Print Calendar" title="Print Calendar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+        </button>
+
+        <!-- PDF Download Dropdown -->
+        <div class="pdf-dropdown" id="pdfDropdown">
+          <button class="control-btn pdf-btn" id="pdfBtn" aria-label="Download PDF" title="Download PDF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+          </button>
+          <div class="pdf-dropdown-menu" id="pdfDropdownMenu">
+            <button class="pdf-option" id="downloadMonthPdf" data-lang-bn="এই মাস ডাউনলোড" data-lang-en="Download This Month">এই মাস ডাউনলোড</button>
+            <button class="pdf-option" id="downloadYearPdf" data-lang-bn="সম্পূর্ণ বছর ডাউনলোড" data-lang-en="Download Full Year">সম্পূর্ণ বছর ডাউনলোড</button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="control-btn hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" id="navBar">
+      <div class="nav-inner">
+        <!-- Month Navigation -->
+        <div class="nav-group nav-arrows">
+          <button class="nav-btn" id="prevMonth" aria-label="Previous Month" data-lang-bn="◀ আগের মাস" data-lang-en="◀ Prev">
+            <span class="nav-btn-icon">◀</span>
+            <span class="nav-btn-text" data-lang-bn="আগের মাস" data-lang-en="Prev">আগের মাস</span>
+          </button>
+          <button class="nav-btn nav-today" id="todayBtn" aria-label="Go to Today" data-lang-bn="আজ" data-lang-en="Today">আজ</button>
+          <button class="nav-btn" id="nextMonth" aria-label="Next Month" data-lang-bn="পরের মাস ▶" data-lang-en="Next ▶">
+            <span class="nav-btn-text" data-lang-bn="পরের মাস" data-lang-en="Next">পরের মাস</span>
+            <span class="nav-btn-icon">▶</span>
+          </button>
+        </div>
+
+        <!-- Month/Year Dropdown -->
+        <div class="nav-group nav-dropdowns">
+          <select class="nav-select" id="monthSelect" aria-label="Select Month"></select>
+          <select class="nav-select" id="yearSelect" aria-label="Select Year">
+            <option value="2026">2026</option>
+          </select>
+        </div>
+
+        <!-- Jump to Date -->
+        <div class="nav-group nav-jump">
+          <label for="jumpDate" class="jump-label" data-lang-bn="তারিখে যান:" data-lang-en="Jump to:">তারিখে যান:</label>
+          <input type="date" class="nav-date-input" id="jumpDate" min="2026-01-01" max="2026-12-31" aria-label="Jump to Date">
+        </div>
+
+        <!-- Mobile Additional Controls -->
+        <div class="nav-group nav-mobile-controls">
+          <button class="nav-btn mobile-pdf-btn" id="mobileDownloadMonthPdf" data-lang-bn="এই মাস ডাউনলোড (PDF)" data-lang-en="Download This Month (PDF)">এই মাস ডাউনলোড (PDF)</button>
+          <button class="nav-btn mobile-pdf-btn" id="mobileDownloadYearPdf" data-lang-bn="সম্পূর্ণ বছর ডাউনলোড (PDF)" data-lang-en="Download Full Year (PDF)">সম্পূর্ণ বছর ডাউনলোড (PDF)</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content" id="mainContent">
+    <div class="content-wrapper">
+
+      <!-- Month Title Display -->
+      <div class="month-display" id="monthDisplay">
+        <h2 class="month-title" id="monthTitle"></h2>
+      </div>
+
+      <!-- Calendar + Holiday Panel Layout -->
+      <div class="calendar-layout">
+
+        <!-- Calendar Grid Section -->
+        <section class="calendar-section" id="calendarSection">
+          <div class="calendar-container" id="calendarContainer">
+            <!-- Day Headers -->
+            <div class="day-headers" id="dayHeaders"></div>
+            <!-- Calendar Grid -->
+            <div class="calendar-grid" id="calendarGrid"></div>
+          </div>
+        </section>
+
+        <!-- Holiday Panel -->
+        <aside class="holiday-panel" id="holidayPanel">
+          <h3 class="panel-title" id="panelTitle" data-lang-bn="এই মাসের ছুটি ও উৎসব" data-lang-en="Holidays & Festivals This Month">এই মাসের ছুটি ও উৎসব</h3>
+          <div class="holiday-list" id="holidayList"></div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== TOOLTIP ===== -->
+  <div class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <!-- ===== LOADING OVERLAY (for PDF generation) ===== -->
+  <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <p class="loading-text" id="loadingText" data-lang-bn="PDF তৈরি হচ্ছে..." data-lang-en="Generating PDF...">PDF তৈরি হচ্ছে...</p>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-alpona" aria-hidden="true">
+        <div class="alpona-border"></div>
+      </div>
+      <p class="footer-text">
+        <span data-lang-bn="© ২০২৬ বাংলা পঞ্জিকা। সর্বস্বত্ব সংরক্ষিত।" data-lang-en="© 2026 Bengali Calendar. All rights reserved.">© ২০২৬ বাংলা পঞ্জিকা। সর্বস্বত্ব সংরক্ষিত।</span>
+      </p>
+      <p class="footer-sub">
+        <span data-lang-bn="পশ্চিমবঙ্গের ছুটি ও উৎসব সহ" data-lang-en="With West Bengal holidays & festivals">পশ্চিমবঙ্গের ছুটি ও উৎসব সহ</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
